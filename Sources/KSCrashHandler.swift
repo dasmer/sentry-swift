@@ -134,29 +134,33 @@ private class KSCrashReportSinkSentry: NSObject, KSCrashReportFilter {
     }
     
     @objc func filterReports(_ reports: [AnyType]!, onCompletion: KSCrashReportFilterCompletion!) {
-        #if swift(>=3.0)
-            DispatchQueue.global(qos: .background).async {
+        if #available(iOS 8.0, *) {
+            #if swift(>=3.0)
+                DispatchQueue.global(qos: .background).async {
+                    // Mapping reports
+                    let events: [Event] = reports?
+                        .flatMap({$0 as? CrashDictionary})
+                        .flatMap({CrashReportConverter.convertReportToEvent($0)}) ?? []
+                    
+                    // Sends events recursively
+                    self.sendEvent(reports, events: events, success: true, onCompletion: onCompletion)
+                }
+            #else
+                let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                dispatch_async(backgroundQueue, {
                 // Mapping reports
                 let events: [Event] = reports?
-                    .flatMap({$0 as? CrashDictionary})
-                    .flatMap({CrashReportConverter.convertReportToEvent($0)}) ?? []
+                .flatMap({$0 as? CrashDictionary})
+                .flatMap({CrashReportConverter.convertReportToEvent($0)}) ?? []
                 
                 // Sends events recursively
                 self.sendEvent(reports, events: events, success: true, onCompletion: onCompletion)
-            }
-        #else
-            let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-            let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-            dispatch_async(backgroundQueue, {
-                // Mapping reports
-                let events: [Event] = reports?
-                    .flatMap({$0 as? CrashDictionary})
-                    .flatMap({CrashReportConverter.convertReportToEvent($0)}) ?? []
-                
-                // Sends events recursively
-                self.sendEvent(reports, events: events, success: true, onCompletion: onCompletion)
-            })
-        #endif
+                })
+            #endif
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     private func sendEvent(_ reports: [AnyType]!, events allEvents: [Event], success: Bool, onCompletion: KSCrashReportFilterCompletion!) {

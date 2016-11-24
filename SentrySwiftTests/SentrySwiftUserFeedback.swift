@@ -45,10 +45,16 @@ class SentrySwiftUserFeedback: XCTestCase {
             XCTAssertEqual(userFeedbackEncoding.serialized, "email=%3F%3F><MNBVCXZ~}{POIUYTREWQ|%27&name=\"%C3%A4%C3%9Fa&comments=_%29%28%2A%26^%25%24%23%40%21%F0%9F%9A%80".dataUsingEncoding(NSUTF8StringEncoding))
         #endif
         
-        XCTAssertEqual(userFeedbackEncoding.queryItems, [
-            URLQueryItem(name: "email", value: "%3F%3F><MNBVCXZ~}{POIUYTREWQ|%27"),
-            URLQueryItem(name: "eventId", value: event.eventID)
-        ])
+        XCTAssertEqual(userFeedbackEncoding.queryItems.first?.value, "%3F%3F><MNBVCXZ~}{POIUYTREWQ|%27")
+        XCTAssertEqual(userFeedbackEncoding.queryItems.last?.value, event.eventID)
+        
+        let query = userFeedbackEncoding.queryItems.flatMap { queryItem -> String in
+            if let value = queryItem.value {
+                return "\(queryItem.name)=\(value)"
+            }
+            return ""
+        }.joined(separator: "&")
+        print("\(query)")
     }
     
     func testUserFeedbackViewModel() {

@@ -45,10 +45,10 @@ extension UserFeedback {
         return string
     }
     
-    internal var queryItems: [URLQueryItem] {
+    internal var queryItems: [QueryItem] {
         return [
-            URLQueryItem(name: "email", value: urlEncodeString(email)),
-            URLQueryItem(name: "eventId", value: event?.eventID)
+            QueryItem(name: "email", value: urlEncodeString(email)),
+            QueryItem(name: "eventId", value: event?.eventID)
         ]
     }
 }

@@ -173,32 +173,40 @@ internal enum SentryError: Error {
 	*/
 	@objc public func captureMessage(_ message: String, level: SentrySeverity = .Info) {
 		let event = Event(message, level: level)
-        #if swift(>=3.0)
-            DispatchQueue.global(qos: .background).async {
-                self.captureEvent(event)
-            }
-        #else
-            let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-            let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-            dispatch_async(backgroundQueue, {
-                self.captureEvent(event)
-            })
-        #endif
+        if #available(iOS 8.0, *) {
+            #if swift(>=3.0)
+                DispatchQueue.global(qos: .background).async {
+                    self.captureEvent(event)
+                }
+            #else
+                let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                dispatch_async(backgroundQueue, {
+                    self.captureEvent(event)
+                })
+            #endif
+        } else {
+            self.captureEvent(event) // No background on iOS7
+        }
 	}
 
 	/// Reports given event to Sentry
 	@objc public func captureEvent(_ event: Event) {
-        #if swift(>=3.0)
-            DispatchQueue.global(qos: .background).async {
-                self.captureEvent(event, useClientProperties: true)
-            }
-        #else
-            let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-            let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-            dispatch_async(backgroundQueue, {
-                self.captureEvent(event, useClientProperties: true)
-            })
-        #endif
+        if #available(iOS 8.0, *) {
+            #if swift(>=3.0)
+                DispatchQueue.global(qos: .background).async {
+                    self.captureEvent(event, useClientProperties: true)
+                }
+            #else
+                let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                dispatch_async(backgroundQueue, {
+                    self.captureEvent(event, useClientProperties: true)
+                })
+            #endif
+        } else {
+            self.captureEvent(event, useClientProperties: true) // No background on iOS7
+        }
 	}
     
     /// This will make you app crash, use only for test purposes
@@ -309,17 +317,21 @@ internal enum SentryError: Error {
     
     /// Sends events that are stored on disk to the server
     private func sendEventsOnDiskInBackground() {
-        #if swift(>=3.0)
-            DispatchQueue.global(qos: .background).async {
-                self.sendEventsOnDisk()
-            }
-        #else
-            let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-            let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-            dispatch_async(backgroundQueue, {
-                self.sendEventsOnDisk()
-            })
-        #endif
+        if #available(iOS 8.0, *) {
+            #if swift(>=3.0)
+                DispatchQueue.global(qos: .background).async {
+                    self.sendEventsOnDisk()
+                }
+            #else
+                let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                dispatch_async(backgroundQueue, {
+                    self.sendEventsOnDisk()
+                })
+            #endif
+        } else {
+            self.sendEventsOnDisk() // No background on iOS7
+        }
     }
 
 	/// Attempts to send all events that are saved on disk

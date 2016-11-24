@@ -144,6 +144,11 @@
 		63CDABA31DDF09EC00B63921 /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDAB901DDCADF900B63921 /* UserFeedback.swift */; };
 		63CDABA41DDF09EC00B63921 /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDAB901DDCADF900B63921 /* UserFeedback.swift */; };
 		63CDABA51DDF09ED00B63921 /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CDAB901DDCADF900B63921 /* UserFeedback.swift */; };
+		63F645781DE6DAE900E1113C /* UIImage+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F645771DE6DAE900E1113C /* UIImage+Extras.swift */; };
+		63F645801DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F6457F1DE6DDFD00E1113C /* NSURLComponents+Extras.swift */; };
+		63F645811DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F6457F1DE6DDFD00E1113C /* NSURLComponents+Extras.swift */; };
+		63F645821DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F6457F1DE6DDFD00E1113C /* NSURLComponents+Extras.swift */; };
+		63F645831DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F6457F1DE6DDFD00E1113C /* NSURLComponents+Extras.swift */; };
 		80628F071CF5417A002A656D /* SentrySwiftStacktraceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80628F061CF5417A002A656D /* SentrySwiftStacktraceTests.swift */; };
 		80628F081CF5417A002A656D /* SentrySwiftStacktraceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80628F061CF5417A002A656D /* SentrySwiftStacktraceTests.swift */; };
 		80628F091CF5417A002A656D /* SentrySwiftStacktraceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80628F061CF5417A002A656D /* SentrySwiftStacktraceTests.swift */; };
@@ -350,6 +355,8 @@
 		63CDAB901DDCADF900B63921 /* UserFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFeedback.swift; sourceTree = "<group>"; };
 		63CDAB951DDDDFB200B63921 /* SentrySwiftUserFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentrySwiftUserFeedback.swift; sourceTree = "<group>"; };
 		63CDAB9E1DDEF29900B63921 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63F645771DE6DAE900E1113C /* UIImage+Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extras.swift"; sourceTree = "<group>"; };
+		63F6457F1DE6DDFD00E1113C /* NSURLComponents+Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLComponents+Extras.swift"; sourceTree = "<group>"; };
 		80628F061CF5417A002A656D /* SentrySwiftStacktraceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentrySwiftStacktraceTests.swift; sourceTree = "<group>"; };
 		80628F0A1CF544C8002A656D /* SentrySwiftErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentrySwiftErrorTests.swift; sourceTree = "<group>"; };
 		8092F8E41CF2499600634F3F /* Sentry+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sentry+Error.swift"; sourceTree = "<group>"; };
@@ -668,6 +675,8 @@
 			isa = PBXGroup;
 			children = (
 				9B02CAB61CF5C20F004F614C /* Dictionary+Extras.swift */,
+				63F645771DE6DAE900E1113C /* UIImage+Extras.swift */,
+				63F6457F1DE6DDFD00E1113C /* NSURLComponents+Extras.swift */,
 			);
 			name = Swift;
 			sourceTree = "<group>";
@@ -1181,6 +1190,7 @@
 				63CDABA41DDF09EC00B63921 /* UserFeedback.swift in Sources */,
 				03C715261CE4DB8D0080AE60 /* Request.swift in Sources */,
 				03C7152F1CE4DB980080AE60 /* CrashHandler.swift in Sources */,
+				63F645821DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */,
 				03C715251CE4DB8D0080AE60 /* DSN.swift in Sources */,
 				03C715321CE4DBAE0080AE60 /* KSCrashHandler.swift in Sources */,
 				03C7152D1CE4DB940080AE60 /* User.swift in Sources */,
@@ -1227,6 +1237,7 @@
 				033A342C1C60693400BED5AE /* User.swift in Sources */,
 				63CDABA31DDF09EC00B63921 /* UserFeedback.swift in Sources */,
 				9B02CABC1CF5C270004F614C /* NSDate+Extras.swift in Sources */,
+				63F645801DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */,
 				036378321C227C7900644C01 /* Event.swift in Sources */,
 				03B07DC31D089B23007B4758 /* KSCrashHandler.swift in Sources */,
 				0303BC3F1C29FC3F003E7B16 /* EventSerializable.swift in Sources */,
@@ -1268,6 +1279,7 @@
 				03CFCEC21C612F3E00999EB7 /* KSCrashHandler.swift in Sources */,
 				9B02CABD1CF5C270004F614C /* NSDate+Extras.swift in Sources */,
 				03C1E26B1D4652180004A612 /* Thread.swift in Sources */,
+				63F645781DE6DAE900E1113C /* UIImage+Extras.swift in Sources */,
 				63CDAB8A1DDC58A600B63921 /* UserFeedbackViewModel.swift in Sources */,
 				03C1E5A81C57192A004D68D8 /* EventOffline.swift in Sources */,
 				9B02CAFF1CF607A5004F614C /* Exception.swift in Sources */,
@@ -1278,6 +1290,7 @@
 				63CDAB8D1DDCAAE700B63921 /* SentryEndpoint.swift in Sources */,
 				03D4D9FA1CA48FA800799CC9 /* Breadcrumb.swift in Sources */,
 				03E3D1D81C3E166800F00547 /* EventSerializable.swift in Sources */,
+				63F645811DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */,
 				63CDAB871DDC51E400B63921 /* UserFeedbackTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1323,6 +1336,7 @@
 				63CDABA51DDF09ED00B63921 /* UserFeedback.swift in Sources */,
 				63CDAB361DD9D4A800B63921 /* BreadcrumbStore.swift in Sources */,
 				63CDAB341DD9D4A800B63921 /* Exception.swift in Sources */,
+				63F645831DE6DDFD00E1113C /* NSURLComponents+Extras.swift in Sources */,
 				63CDAB2E1DD9D49B00B63921 /* Event.swift in Sources */,
 				63CDAB291DD9D48800B63921 /* Sentry+Error.swift in Sources */,
 				63CDAB331DD9D4A800B63921 /* Breadcrumb.swift in Sources */,
@@ -1649,7 +1663,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SentrySwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
@@ -1676,7 +1690,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SentrySwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.getsentry.$(PRODUCT_NAME:rfc1034identifier)";

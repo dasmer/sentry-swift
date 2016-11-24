@@ -78,7 +78,7 @@ public final class UserFeedbackTableViewController: UITableViewController, UITex
             
             if let bundleURL = Bundle(for: type(of: self)).url(forResource: "assets", withExtension: "bundle"),
             let bundle = Bundle(url: bundleURL) {
-            sentryLogoImageView.image = UIImage(named: "sentry-glyph-black", in: bundle, compatibleWith: nil)
+                sentryLogoImageView.image = UIImage.imageFromBundle(named: "sentry-glyph-black", in: bundle)
             }
         #else
             poweredByTableViewCell.hidden = !viewModel.showSentryBranding
@@ -88,7 +88,7 @@ public final class UserFeedbackTableViewController: UITableViewController, UITex
             
             if let bundleURL = NSBundle(forClass: self.dynamicType).URLForResource("assets", withExtension: "bundle"),
                 let bundle = NSBundle(URL: bundleURL) {
-                sentryLogoImageView.image = UIImage(named: "sentry-glyph-black", inBundle: bundle, compatibleWithTraitCollection: nil)
+                sentryLogoImageView.image = UIImage.imageFromBundle(named: "sentry-glyph-black", in: bundle)
             }
         #endif
         
